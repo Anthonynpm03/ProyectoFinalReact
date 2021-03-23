@@ -1,0 +1,11 @@
+$colorPrincipal: #0D0C0C;
+$colorSecundario: #F9F9F9;
+$titulos: #a00f0f;
+@import "./components/scss/Mixins.scss";
+@import "./components/scss/reset.scss";
+@import "./components/scss/NavBar.scss";
+@import "./components/scss/SlidesShow.scss";
+@import "./components/scss/CategoryListContainer.scss";
+@import "./components/scss/CategoryList.scss";
+@import "./components/scss/ItemList.scss";
+@import "./components/scss/ItemCount.scss";
