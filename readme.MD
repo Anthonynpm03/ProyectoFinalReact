@@ -223,7 +223,7 @@ not ie 11 -> indicamos que no compile para internet explorer 11
     "browserslist": "> 0.25%, not dead, not ie 11"
 -->
 
-15.DESCARGAR:
+15. DESCARGAR:
     npm i web-vitals
     Crear en la carpeta SRC el archivo reportWebVitals.js con el siguiente codigo:
     <!---
@@ -240,8 +240,11 @@ not ie 11 -> indicamos que no compile para internet explorer 11
         };
     export default reportWebVitals;
     -->
+16. DESCARGAR
+npm i react-router-dom
+Para poder usar los NavLink y enrutamientos dentro de la app!
 
-16. FUENTE:
+17. FUENTE:
 https://www.youtube.com/watch?v=97Ajv8-NRVY
 
 

@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 
-const ItemCount = ({productos, indice, initial,}) => {
+const ItemCount = ({stock, initial, productos, id}) => {
     const [cantidad, setCantidad] = useState(initial);
-    const [stockActual, setStockActual] = useState(productos[indice].stock)
+    const [stockActual, setStockActual] = useState(stock);
 
     useEffect(()=> {
         console.log("Esta seccion funciona igual que el componentDidMount");
@@ -22,9 +22,14 @@ const ItemCount = ({productos, indice, initial,}) => {
             alert(`El total de unidades disponibles es de ${stockActual}`);
         }
         else{
-            productos[indice].stock -= cantidad;
-            setStockActual(productos[indice].stock);
-            alert(`quedan ${productos[indice].stock} unidades disponibles!`);
+            productos.map((item, i)=>{
+                if(item.id === id){
+                    item.stock -= cantidad;
+                    console.log(item.stock);
+                    setStockActual(item.stock);
+                    alert(`Haz agregado ${cantidad} unidades a tu carrito!`);
+                }
+            })
         }
     };
 

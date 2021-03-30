@@ -1,52 +1,64 @@
-import {useState, useEffect} from 'react';
-import ItemCount from './ItemCount';
+import ItemCard from './ItemCard';
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 
 
 
-const  ItemList = ({productos, categorias}) =>{
 
-    return(
-        <div className="itemListContainer inactive">
-            <h1>Listado de productos</h1>
-        {
-            categorias.map((y, j)=>
-                <div key={j} id={`${y}Items`} className="productCardContainer">
-                    {productos.map((x, i)=>{
-                        if(x.categoria === y){
-                            return (
-                                <div key={i} className="productCard">
-                                    <div className="productCard__info">
-                                        <div className="productCardinfo__img">
-                                            <img src={x.imagen}></img>
-                                        </div>
-                                        <div className="productCardinfo__texto">
-                                                <h3>{x.nombre}</h3>
-                                                <span>Id:{x.id}</span>
-                                                <p className="productCardinfo__texto--descripcion">{x.descripcion}</p>
-                                                <p className="productCardinfo__texto--preciofinal">${x.precioOferta} x Kg</p>
-                                                <p className="productCardinfo__texto--precioTachado">${x.precioNormal} x Kg</p>
-                                        </div>
-                                    </div>
-                                    <div className="productCard__otros">
-                                            <p>Varios descuentos para ti!</p>
-                                            <a>Ver Detalles</a>
-                                    </div>
-                                    <ItemCount productos={productos} indice={i} initial={1}/>
-                                </div>
-                                    )
-                                }
-                            }
-                    )}
-                </div>
+const  ItemList = ({productos}) =>{
+
+    // UseState
+    let [items, setItems] = useState([]);
+    // UseParams
+    let {category} = useParams();
+    let itemsMostrar = [];
+    // Use Effect
+    useEffect(()=> {
+        setItems([])
+        getItems()
+        .then((data) => {
+            if(category === undefined){
+                setItems(data)
+            }
+            else{
+                data.map((item, i) => {
+                    if(item.categoria === category){
+                        itemsMostrar.push(item);
+                    }
+                })
+                setItems(itemsMostrar);
+            }
+        })
+    }, [category]);
+
+
+    const getItems = () => {
+        return (
+            new Promise((resolve, rejected)=> {
+                setTimeout(()=> {
+                    resolve(productos);
+                    rejected('Error al cargar los productos');
+                }, 2000)
+            })
+        )
+    }
+
+    if(items.length > 0){
+        return(
+            <ul className="itemList">
+                {items.map((item, j)=>
+                    <ItemCard item={item} productos={productos}/>
+                    )
+                }
+            </ul>
+                )
+        }
+        else{
+            return(
+                <p>No hay Articulos para esta categoria</p>
             )
         }
-    </div>
-        )
 }
-
-
-
-
 
 
 
