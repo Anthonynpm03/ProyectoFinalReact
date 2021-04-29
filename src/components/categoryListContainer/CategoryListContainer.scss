@@ -1,0 +1,21 @@
+.categoryListContainer{
+    width: 100%;
+    @include flex(column, nowrap, center, center );
+    h1{
+        font-size: 48px;
+        color: $titulos;
+        text-align: center;
+    }
+    h3{
+        margin-top: 15px;
+        font-size: 38px;
+        padding: 0px 20px 30px 20px;
+        color: $titulos;
+        @media (max-width: 768px) {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+
+}

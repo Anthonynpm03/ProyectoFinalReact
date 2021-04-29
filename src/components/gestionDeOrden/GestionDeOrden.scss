@@ -1,0 +1,45 @@
+.gestionDeOrden{
+    width: 40%;
+    margin-top: 30px;
+    @include flex(column, nowrap, space-between, center);
+    h4{
+        width: 100%;
+        text-align: center;
+        font-size: 36px;
+        color: #292828;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.4);
+    }
+    p{
+        font-size: 26px;
+        padding: 30px 0px;
+    }
+    .gestion__buttons{
+        width: 100%;
+        @include flex(row, nowrap, space-evenly, center);
+        button{
+            @include flex(column, nowrap, space-evenly, center);
+            padding: 0px 5px;
+            width: 40%;
+            height: 100px;
+            background-color: white;
+            border: 1px solid rgba($color: #000000, $alpha: 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &focus{
+                outline: none;
+            }
+            &:hover{
+                box-shadow: 0px 1px 1px rgba($color: #00000000, $alpha: 0.4);
+                transition: all 0.3s ease;
+            }
+            h5{
+                color: #292828;
+                font-size: 16px;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}

@@ -1,0 +1,57 @@
+.ItemDetail{
+    width: 100%;
+    height: 100%;
+    padding: 60px 60px;
+    @include flex(column, nowrap, center, center);
+    .ItenDetail__information{
+        width: 100%;
+        height: 70%;
+        @include flex(row, nowrap, center, center);
+        .ItenDetail__information--miniaturas{
+            width: 20%;
+            height: 100%;
+            padding: 30px 10px;
+            @include flex(column, nowrap, space-evenly, center);
+            .miniatura{
+                width: 100px;
+                height: 80px;
+                cursor: pointer;
+            }
+        }
+        .ItenDetail__information--banner{
+            width: 50%;
+            height: 100%;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .ItenDetail__information--texto{
+            width: 30%;
+            height: 100%;
+            padding: 30px 10px;
+            @include flex(column, nowrap, space-evenly, center);
+            .ItenDetail__information--textoPrecioNormal{
+                text-decoration: line-through;
+            }
+        }
+    }
+    .ItenDetail__configuraciones{
+        width: 100%;
+        height: 30%;
+        @include flex(row, nowrap, space-evenly, center);
+        .ItenDetail__configuraciones--comentarios{
+            width: 30%;
+            @include flex(column, nowrap, flex-start, center);
+            textarea{
+                width: 100%;
+            }
+        }
+        .ItenDetail__configuraciones--itemCount{
+            width: 30%;
+        }
+        .ItenDetail__configuraciones--Button{
+            width: 30%;
+        }
+    }
+}

@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   // SI LA APP ESTA CORRIENDO EN PRODUCTIVO, STRICTMODE NO MOSTRARA ERRORES AL USUARIO.
   <React.StrictMode>
-  <App />
+    <App />
 </React.StrictMode>
   , document.getElementById("root"));
 

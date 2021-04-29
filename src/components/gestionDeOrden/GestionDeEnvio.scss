@@ -1,0 +1,126 @@
+.gestionEnvio{
+    width: 40%;
+    margin-top: 30px;
+    h4{
+        width: 100%;
+        text-align: center;
+        font-size: 36px;
+        color: #292828;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.4);
+    }
+    .datosDelComprador{
+        padding: 10px;
+        @include flex(column, nowrap, center, center);
+        p{
+            width: 100%;
+            text-align: start;
+            font-size: 20px;
+        }
+        .datosDelComprador__inputs{
+            padding: 20px 0px;
+            width: 100%;
+            @include flex(column, nowrap, space-between, flex-start);
+            label{
+                font-size: 20px;
+                font-weight: bold;
+                color: #292828;
+            }
+            input{
+                border: none;
+                padding: 4px 0px 2px 8px;
+                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.5);
+                font-size: 18px;
+                font-weight: normal;
+                &:focus{
+                    outline: none;
+                }
+            }
+            .datosDelComprador__info{
+                width: 90%;
+                @include flex(row, nowrap, center, center);
+                @media (max-width: 768px) {
+                    justify-content: space-evenly;
+                    align-items: flex-start;
+                }
+                .datosDelComprador__nombre{
+                    width: 48%;
+                    @media (max-width: 768px) {
+                        width: 45%;
+                    }
+                }
+                .datosDelComprador__apellido{
+                    width: 48%;
+                    @media (max-width: 768px) {
+                        width: 45%;
+                    }
+                }
+                input{
+                    margin-top: 10px;
+                    width: 100%;
+                }
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+            .datosDelComprador__tlf{
+                width: 100%;
+                padding: 15px 0px;
+            }
+            .datosDelComprador__direccion{
+                width: 100%;
+                padding: 15px 0px;
+                @include flex(column, nowrap, center, flex-start);
+                span{
+                    padding: 10px;
+                    font-size: 20px;
+                    color: #292828;
+                }
+                .datosDelComprador__direccionInputs{
+                    width: 100%;
+                    @include flex(column, nowrap, center, flex-start);
+                    select{
+                        margin: 10px 0px;
+                        font-size: 18px;
+                        padding: 2px;
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+        span{
+            font-size: 22px;
+            color: #292828;
+        }
+        .datosDelComprador__dni{
+            width: 100%;
+            padding: 15px 0px;
+        }
+    }
+    .datosDelComprador__locales{
+        width: 100%;
+        @include flex(row, nowrap, space-evenly, center);
+        padding: 15px, 0px;
+        button{
+            padding: 15px 20px;
+            border: 1px solid rgba($color: #000000, $alpha: 0.6);
+            &:focus{
+                border: 2px solid black;
+                box-shadow: 2px 2px 2px rgba($color: #000000, $alpha: 0.4);
+            }
+        }
+    }
+    .datosDelComprador__buttons{
+        width: 100%;
+        padding: 15px 0px;
+        @include flex(row, nowrap, space-between, center);
+        button{
+            padding: 20px;
+        }
+    }
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}

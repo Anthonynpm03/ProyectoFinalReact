@@ -1,0 +1,29 @@
+.shoppingCartIcon{
+    @include flex(row, nowrap, center, center);
+    width: 15%;
+    i{
+        color: #D8D0D0;
+        font-size: 18px;
+        padding: 5px 10px;
+        width: 20%;
+        text-align: center;
+        cursor: pointer;
+    }
+    span{
+        color: #D8D0D0;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 5px 10px;
+        width: 20%;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+    &:hover{
+        color: $colorSecundario;
+        text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
+    }
+    @media (max-width: 768px) {
+        width: 15%;
+    }
+}

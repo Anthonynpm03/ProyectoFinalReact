@@ -1,0 +1,18 @@
+a{
+    width: 100%;
+    .irAlCarrito{
+        width: 100%;
+        @include flex(row, nowrap, space-evenly, center);
+        p{
+            font-size: 18px;
+            font-weight: bold;
+            @media (max-width: 768px) {
+                width: 50%;
+             }
+        }
+        .flechaCarrito{
+            font-size: 20px;
+            color: $titulos;
+        }
+    }
+}

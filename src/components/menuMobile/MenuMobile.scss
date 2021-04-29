@@ -1,0 +1,38 @@
+.menuMobile{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: all 0.5s ease;
+    @include flex(column, nowrap, center, center);
+    animation-duration: 0.5s;
+    .fa-times{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        color: #f3f3f3;
+        font-size: 30px;
+        z-index: 3;
+    }
+    ul{
+        @include flex(column, nowrap, space-evenly, center);
+        width: 100%;
+        height: 80%;
+        li{
+            color: #f3f3f3;
+            font-size: 24px;
+            text-align: center;
+            width: 100%;
+            a{
+                text-align: center;
+                width: 100%;
+            }
+        }
+        .dropdonw{
+            @include flex(row, nowrap, center, center);
+        }
+    }
+}

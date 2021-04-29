@@ -1,0 +1,109 @@
+.footerContainer{
+    width: 100%;
+    @include flex(column, nowrap, center, center);
+    background-color: #080808;
+    padding: 30px 60px;
+    border-top: 3px solid rgba($color: #000000, $alpha: 0.6);
+    margin-top: 40px;
+    .footerInformacion{
+        width: 100%;
+        height: 70%;
+        @include flex(row, nowrap, space-between, center);
+        .footerInformacion__rrss{
+            width: 30%;
+            height: 100%;
+            ul{
+                width: 100%;
+                height: 100%;
+                @include flex(column, nowrap, space-evenly, flex-start);
+                @media (max-width: 768px) {
+                    @include flex(column, nowrap, center, center);
+                 }
+                li{
+                    margin-bottom: 15px;
+                    a{
+                        color: #f3f3f3;
+                        font-size: 18px;
+                        letter-spacing: 2px;
+                        transition: all 0.3s ease;
+                        &:hover{
+                            transition: all 0.3s ease;
+                        }
+                    }
+                    .instagramLink{
+                        &:hover{
+                            color: #E1306C;
+                        }
+                    }
+                    .facebookLink{
+                        &:hover{
+                            color: #3b5998;
+                        }
+                    }
+                    .whatsappLink{
+                        &:hover{
+                            color: #00bb2d;
+                        }
+                    }
+                    i{
+                        font-size: 24px;
+                    }
+                    spam{
+                        margin-left: 10px;
+                        @media (max-width: 768px) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .footerInformacion__productos{
+            width: 30%;
+            height: 100%;
+            ul{
+                width: 100%;
+                height: 100%;
+                @include flex(column, nowrap, space-evenly, center);
+                li{
+                    margin-bottom: 10px;
+                    a{
+                        color: #f3f3f3;
+                        font-size: 18px;
+                        letter-spacing: 2px;
+                        transition: all 0.3s ease;
+                        &:hover{
+                            color: $titulos;
+                            transition: all 0.3s ease;
+                        }
+                    }
+                }
+            }
+        }
+        .footerInformacion__opciones{
+            width: 30%;
+            height: 100%;
+            ul{
+                width: 100%;
+                height: 100%;
+                @include flex(column, nowrap, space-evenly, center);
+                li{
+                    margin-bottom: 10px;
+                    color: #f3f3f3;
+                    font-size: 18px;
+                }
+            }
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+    }
+    .footerCredenciales{
+        width: 100%;
+        @include flex(row, nowrap, space-evenly, center);
+        color: #f3f3f3;
+        font-size: 18px;
+    }
+    @media (max-width: 768px) {
+       padding: 10px 10px;
+    }
+}
