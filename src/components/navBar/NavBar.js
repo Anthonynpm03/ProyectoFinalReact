@@ -30,7 +30,7 @@ const NavBar = () => {
                 <ul>
                     <li><NavLink to="/">Inicio</NavLink></li>
                     <li onClick={()=> mostrarOcultarDropdonw()} className="dropdonw">
-                         <span>Productos</span>
+                         Productos
                          <i id="dropdonwArrowDonw" className={mostrarDropdonw ? "fas fa-sort-up" : "fas fa-sort-down"} ></i>
                           {mostrarDropdonw ? <DropdonwMenu/> : null }
                     </li>
@@ -39,7 +39,7 @@ const NavBar = () => {
                 </ul>
                 <ShoppingCar/>
                 <div className="botonResponsive">
-                    <i onClick={mostrarMenuMobile} class="fas fa-bars"></i>
+                    <i onClick={mostrarMenuMobile} className="fas fa-bars"></i>
                 </div>
                 {mostrarMobile ? <MenuMobile mostrarMenu={mostrarMenuMobile}/> : null}
             </div>

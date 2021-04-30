@@ -47,8 +47,8 @@ const GestionEnvio = ({volverGestion}) => {
                             <div className="datosDelComprador__direccion">
                                 <span>Direccion de Entrega:</span>
                                 <div className="datosDelComprador__direccionInputs">
-                                    <select id="userZonaEnvio" onChange={(e) => calcularCostoEnvio(e.target.value)}>
-                                        <option disabled="disabled" selected="selected">Selecciona una zona...</option>
+                                    <select name="userZonaEnvio" id="userZonaEnvio" value="default" onChange={(e) => calcularCostoEnvio(e.target.value)}>
+                                        <option disabled value="default">Seleccione una Direccion</option>
                                         <option value="caballito">Caballito</option>
                                         <option value="flores">Flores</option>
                                         <option value="floresta">Floresta</option>

@@ -5,6 +5,7 @@ import {useContext, useState, useEffect} from 'react';
 import CartContext from "../../context/CartContext";
 import ComponenteCountOrNoDisponible from '../componenteCountOrNoDisponible/ComponenteCountOrNoDisponible';
 import IrAlCarrito from '../irAlCarrito/IrAlCarrito';
+import MensajeAgregarItem from '../mensajeAgregarItem/MensajeAgregarItem';
 import CargandoDatos from '../cargandoDatos/CargandoDatos';
 
 const ItemDetail = () =>{
@@ -30,7 +31,7 @@ const ItemDetail = () =>{
         }, 500)
         }, [id]);
 
-    const restarStock = (e, cantidad) => {
+    const restarStock = (e, cantidad, setCantidad) => {
         let existe = false;
         e.preventDefault();
         if (cantidad > itemActual[1]){
@@ -47,7 +48,7 @@ const ItemDetail = () =>{
         if(!existe){
             let stockRestante = itemActual[1]-cantidad;
             setItemActual([itemActual[0], stockRestante]);
-            addItem(itemActual[0], cantidad);
+            addItem(itemActual[0], cantidad, setCantidad);
         }
     };
 
@@ -71,23 +72,26 @@ const ItemDetail = () =>{
                             </div>
                             <div className="ItenDetail__information--texto">
                                 <h3>{itemActual[0].nombre}</h3>
-                                <span>{itemActual[0].id}</span>
-                                <p>{itemActual[0].descripcion}</p>
-                                <p>{itemActual[0].precioOferta}</p>
-                                <p className="ItenDetail__information--textoPrecioNormal">{itemActual[0].precioNormal}</p>
-                                <p>Envio gratis dentro de las zonas de Paternal, villa del Parque, Monte Castro. Cualquier otra zona distinta destro de Capital tendra un costo adicional de $150</p>
+                                <span>Producto Id: {itemActual[0].id}</span>
+                                <p className="ItenDetail__information--textoDescripcion">{itemActual[0].descripcion}</p>
+                                <p className="ItenDetail__informacion--textoPrecio">$ {itemActual[0].precioOferta} x {itemActual[0].medida}</p>
+                                <p className="ItenDetail__information--textoPrecioNormal">{itemActual[0].precioNormal} x {itemActual[0].medida}</p>
+                                <p className="ItenDetail__informacion--textoEnvio">Take away disponible. Delivery sin costo en un rango de 5 cuadras a la redonda de cada sucursal. Delivery disponible para zonas de Villa del parque, Caballito, Flores, Floresta y Paternal con costo adicional reflejado en el Checkout.</p>
+                                <p className="ItenDetail__informacion--textoPago">Medios de pago: Efectivo y MercadoPago.</p>
                             </div>
                         </div>
                         <div className="ItenDetail__configuraciones">
-                            <div className="ItenDetail__configuraciones--comentarios">
-                                <p>Agrega un Comentario:</p>
-                                <textarea></textarea>
+                            <div className="ItenDetail__configuraciones--volver">
+                                <NavLink to={`/productos/${itemActual[0].categoria}`}>
+                                    <i className="fas fa-arrow-left"></i>
+                                    <p>Volver al listado</p>
+                                </NavLink>
                             </div>
                             <div className="ItenDetail__configuraciones--itemCount">
                                 <ComponenteCountOrNoDisponible item={itemActual[0]} stock={itemActual[1]} initial={1} onAdd={restarStock}/>
                             </div>
                             <div className="ItenDetail__configuraciones--Button">
-                            {itemsEnCarrito.length > 0 ? <NavLink to='/Cart'><IrAlCarrito estado={true}/></NavLink> : <IrAlCarrito estado={false}/>}
+                            {itemsEnCarrito.length > 0 ? <NavLink to='/Cart'><IrAlCarrito estado={true}/></NavLink> : <MensajeAgregarItem/>}
                             </div>
                         </div>
                     </div>

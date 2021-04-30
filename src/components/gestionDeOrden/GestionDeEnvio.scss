@@ -115,6 +115,7 @@
     .datosDelComprador__buttons{
         width: 100%;
         padding: 15px 0px;
+        cursor: pointer;
         @include flex(row, nowrap, space-between, center);
         button{
             padding: 20px;

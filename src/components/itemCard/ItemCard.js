@@ -2,6 +2,7 @@ import {NavLink,} from 'react-router-dom';
 import {useState, useContext} from 'react';
 import ComponenteCountOrNoDisponible from '../componenteCountOrNoDisponible/ComponenteCountOrNoDisponible';
 import IrAlCarrito from '../irAlCarrito/IrAlCarrito';
+import MensajeAgregarItem from '../mensajeAgregarItem/MensajeAgregarItem';
 import CartContext from "../../context/CartContext";
 
 
@@ -12,7 +13,7 @@ const ItemCard = ({item}) =>{
     const [stockActual, setStockActual] = useState(item.stock);
 
 
-    const restarStock = (e, cantidad) => {
+    const restarStock = (e, cantidad, setCantidad) => {
         let existe = false;
         e.preventDefault();
         if (cantidad > stockActual){
@@ -28,7 +29,7 @@ const ItemCard = ({item}) =>{
         }
         if(!existe){
             setStockActual(stockActual - cantidad);
-            addItem(item, cantidad);
+            addItem(item, cantidad, setCantidad);
         }
     };
 
@@ -52,7 +53,7 @@ const ItemCard = ({item}) =>{
                         <NavLink to={`/detalle-del-producto/${item.id}`}>Ver Detalles</NavLink>
                     </div>
                     <ComponenteCountOrNoDisponible item={item} stock={stockActual} initial={1} onAdd={restarStock}/>
-                    {itemsEnCarrito.length > 0 ? <NavLink to='/Cart'><IrAlCarrito estado={true}/></NavLink> : <IrAlCarrito estado={false}/>}
+                    {itemsEnCarrito.length > 0 ? <NavLink to='/Cart'><IrAlCarrito estado={true}/></NavLink> : <MensajeAgregarItem/>}
                 </li>
             </div>
         )

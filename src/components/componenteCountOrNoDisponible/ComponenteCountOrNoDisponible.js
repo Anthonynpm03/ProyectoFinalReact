@@ -8,6 +8,6 @@ const NoDisponible = () => {
     )
 }
 
-const ComponenteCountOrNoDisponible = ({item, stock, initial, onAdd}) => item.stock > 0 ? <ItemCount item={item} stock={stock} initial={initial} onAdd={onAdd}/> : <NoDisponible/>;
+const ComponenteCountOrNoDisponible = ({item, stock, initial, onAdd}) => stock > 0 ? <ItemCount item={item} stock={stock} initial={initial} onAdd={onAdd}/> : <NoDisponible/>;
 
 export default ComponenteCountOrNoDisponible;

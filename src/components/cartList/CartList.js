@@ -6,16 +6,13 @@ const CartList = () =>{
 
     const {itemsEnCarrito} = useContext(CartContext);
 
-
     return(
         <>
             <ul>
                 {
-                    itemsEnCarrito.map(item =>{
-                        return(
-                            <CartItem item={item} key={item.id}/>
-                        )
-                    })
+                    itemsEnCarrito.map(item =>
+                            <CartItem item={item} key={item.item.id}/>
+                    )
                 }
             </ul>
         </>

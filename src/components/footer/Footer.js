@@ -7,9 +7,9 @@ const Footer = () => {
                 <div className="footerInformacion">
                     <div className="footerInformacion__rrss">
                         <ul>
-                            <li><a className="instagramLink" href="https://www.instagram.com/queseriademisinti.oficial/?hl=es-la" target="_blank"><i class="fab fa-instagram"></i> <spam>Siguenos en Instagram!</spam></a></li>
-                            <li><a className="facebookLink" href="https://www.facebook.com/queseriademisinti.oficial1" target="_blank"><i class="fab fa-facebook-square"></i><spam>Queseriademisinti</spam></a></li>
-                            <li><a className="whatsappLink" href="https://wa.link/ddqauk"><i class="fab fa-whatsapp" target="_blank"></i><spam>Comunicate ante cualquier duda!</spam></a></li>
+                            <li><a className="instagramLink" href="https://www.instagram.com/queseriademisinti.oficial/?hl=es-la" target="_blank"><i className="fab fa-instagram"></i> <span>Siguenos en Instagram!</span></a></li>
+                            <li><a className="facebookLink" href="https://www.facebook.com/queseriademisinti.oficial1" target="_blank"><i className="fab fa-facebook-square"></i><span>Queseriademisinti</span></a></li>
+                            <li><a className="whatsappLink" href="https://wa.link/ddqauk"><i className="fab fa-whatsapp" target="_blank"></i><span>Comunicate ante cualquier duda!</span></a></li>
                         </ul>
                     </div>
                     <div className="footerInformacion__productos">
@@ -30,8 +30,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footerCredenciales">
-                    <p><i class="far fa-copyright"></i> 2021  todos los derechos reservados</p>
-                    <spam>Desarrollado por: Anthony Perez</spam>
+                    <p><i className="far fa-copyright"></i> 2021  todos los derechos reservados</p>
+                    <span>Desarrollado por: Anthony Perez</span>
                 </div>
             </div>
         </>

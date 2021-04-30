@@ -2,7 +2,7 @@ import './App.scss';
 import firebase from 'firebase';
 require('firebase/auth');
 import getFirestore from '../config/firebase';
-import {Switch, BrowserRouter, Route, Redirect} from 'react-router-dom';
+import {Switch, BrowserRouter, Route} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import CartContext from './context/CartContext';
 import NavBar from './components/navBar/NavBar';
@@ -12,7 +12,6 @@ import ItemsListContainer from './components/itemListContainer/ItemListContainer
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/Cart';
 import Footer from './components/footer/Footer';
-import Nosotros from './components/nosotros/Nosotros';
 
 
 const App = () =>{
@@ -43,10 +42,11 @@ const App = () =>{
          window.localStorage.setItem("cantidad", cantidad);
     };
 
-    const addItem = (item, cantidad) =>{
+    const addItem = (item, cantidad, setCantidad) =>{
         setItemsEnCarrito([...itemsEnCarrito, {item,cantidad}]);
         setArticulosTotales(articulosTotales + cantidad);
         alert(`Haz agregado ${cantidad} unidades a tu carrito!`);
+        setCantidad(1);
     }
 
     const removeItem =  (e, id, cantidad) =>{
@@ -142,9 +142,6 @@ const App = () =>{
                             <Switch>
                                 <Route path="/detalle-del-producto/:id">
                                     <ItemDetailContainer/>
-                                </Route>
-                                <Route path="/nosotros/">
-                                    <Nosotros/>
                                 </Route>
                                 <Route path="/productos/:category">
                                     <ItemsListContainer/>

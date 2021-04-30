@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import ItemCard from '../itemCard/ItemCard';
 import CargandoDatos from '../cargandoDatos/CargandoDatos';
+import ArticulosNoDisponible from '../articulosNoDisponible/articulosNoDisponibles';
 
 const  ItemList = () =>{
 
@@ -20,7 +21,7 @@ const  ItemList = () =>{
                 const products = productosCollection.where("categoria", "==", category);
                 products.get().then((resp) => {
                     if (resp.size === 0) {
-                        console.log("Sin datos")
+                        setItemsMostrar(undefined);
                     }
                     else{
                         resp.docs.map((producto)=> {items.push({id: producto.id, ...producto.data()})});
@@ -45,6 +46,12 @@ const  ItemList = () =>{
     }, [category]);
 
 
+
+    if(itemsMostrar === undefined){
+        return(
+            <ArticulosNoDisponible/>
+        )
+    }
     if(itemsMostrar.length > 0){
         return(
             <ul className="itemList">
@@ -55,7 +62,7 @@ const  ItemList = () =>{
             </ul>
                 )
         }
-        else{
+    else{
             return(
                 <CargandoDatos texto={"Actualizando productos..."}/>
             )

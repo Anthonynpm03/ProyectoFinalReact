@@ -4,7 +4,6 @@ const OrdendeRetiro = ({formatDate, ordenRealizada, ordenId, terminarCompra}) =>
     function cargarProductos (){
         ordenRealizada.productos.map((item) => {
             productos.push([item.item.nombre, item.item.precioOferta + "x" + item.item.medida, item.cantidad]);
-            console.log(productos);
             });
             let itemMensaje = "";
             productos.map((item, i) => {
@@ -22,7 +21,6 @@ const OrdendeRetiro = ({formatDate, ordenRealizada, ordenId, terminarCompra}) =>
             Telefono: ${ordenRealizada.usuario.telefono} %20 %20 %20 %20 %20
             Productos: ${productosMensaje} %20 %20 %20 %20 %20
             Total Compra: ${ordenRealizada.totalcompra}`;
-            console.log(mensaje);
     return(
         <>
             <div className="OrdenContenedor">
@@ -57,7 +55,7 @@ const OrdendeRetiro = ({formatDate, ordenRealizada, ordenId, terminarCompra}) =>
                             </li>
                         {ordenRealizada.productos.map((item) => {
                             return(
-                                <li>
+                                <li key={item.item.id}>
                                     <span>{item.item.nombre}</span>
                                     <span>{item.item.precioOferta} x {item.item.medida}</span>
                                     <span>{item.cantidad} {item.item.medida}</span>
@@ -69,8 +67,9 @@ const OrdendeRetiro = ({formatDate, ordenRealizada, ordenId, terminarCompra}) =>
                     <div className="ordenDeEnvio__total">
                         <p>Total a Pagar con Envio: <span>$ {ordenRealizada.totalcompra}</span></p>
                     </div>
-                    <a className="linkWhatsApp" target="_blank" href={`https://wa.me/541166232923?text=${mensaje}`}>Ir a WhatsApp <i class="fab fa-whatsapp"></i></a>
+                    <a className="linkWhatsApp" target="_blank" href={`https://wa.me/541166232923?text=${mensaje}`}>Ir a WhatsApp <i className="fab fa-whatsapp"></i></a>
                 </div>
+                <p className="notificacionWhatsApp">Para un mejor seguimiento de tu pedido, te invitamos a hacernos llegar la orden haciendo click en el link a WhatsApp donde nos comunicaremos contigo ante cualquier circunstancia!</p>
                 <button className="botonTerminarCompra" onClick={(e)=> terminarCompra(e)}>Terminar Compra</button>
             </div>
         </>

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const ItemCount = ({item, stock, initial, onAdd}) => {
+const ItemCount = ({stock, initial, onAdd}) => {
 
     const [cantidad, setCantidad] = useState(initial);
 
@@ -11,9 +11,9 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
         e.preventDefault();
         setCantidad(cantidad+1)
         console.log(cantidad);
-        if (cantidad >= item.stock){
+        if (cantidad >= stock){
             alert("No puedes exceder de las cantidades del producto");
-            setCantidad(item.stock);
+            setCantidad(stock);
         }
     }
 
@@ -43,7 +43,7 @@ const ItemCount = ({item, stock, initial, onAdd}) => {
                         </input>
                         <button className="itemCountButton" onClick={(e)=>sumarCantidad(e)}>+</button>
                     </div>
-                    <button id="buttonOnAdd" onClick={(e)=>onAdd(e, cantidad)}>Agregar al Carrito</button>
+                    <button id="buttonOnAdd" onClick={(e)=>onAdd(e, cantidad, setCantidad)}>Agregar al Carrito</button>
                 </form>
             </div>
         </>

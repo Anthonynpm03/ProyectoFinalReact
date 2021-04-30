@@ -60,6 +60,7 @@ INSTALAMOS:
                 path: path.resolve(__dirname, '../dist'),
                 // EL CONTENTHASH LO QUE HACE ES CREAR EL ARCHIVO CON UN NUMERO AL AZAR PARA AYUDAR A INDINTIFICAR ARCHIVOS NUEVOS CON CAMBIOS
                 filename: 'main.[contenthash].js',
+                publicPath: '/'
                     },
 
              module: {
@@ -190,9 +191,9 @@ module.exports = merge(common, prodConfig);
 INSTALAMOS:
     npm i core-js
 
-"useBuiltIns":  "usage" -> le indica a care que revise mi codigo y al encontrar alguna porcion que sabe que los navegadores no entendera aplique un polyfile a esa porcion de codigo para poder ser copilado.
+"useBuiltIns":  "usage" -> le indica a core que revise mi codigo y al encontrar alguna porcion que sabe que los navegadores no entendera aplique un polyfile a esa porcion de codigo para poder ser copilado.
 
-13. CRAR ARCHIVO DE CONDIGURACION DE BABEL:
+13. CREAR ARCHIVO DE CONDIGURACION DE BABEL:
     "babel.config.json"
 
 La configuracion "runtime": "automatic": es para que react se importe automaticamente a todos nuestros componentes y no tener que importarlo a mano en cada uno de ellos.
@@ -244,7 +245,22 @@ not ie 11 -> indicamos que no compile para internet explorer 11
 npm i react-router-dom
 Para poder usar los NavLink y enrutamientos dentro de la app!
 
-17. FUENTE:
+17. PARA UTILIZAR FIREBASE COMO BASE DE DATOS, INSTALAR LA ULTIMA VERSION DISPONIBLE CON EL COMANDO: npm i firebase 
+
+18. CREAR ARCHIVO firebase.config PARA HACER LA CONEXCION CON LA BASE DE DATOS CON EL SIGUIENTE CODIGO:
+
+<!-- import firebase from 'firebase';
+require('firebase/auth');
+
+const app = firebase.initializeApp({
+   KEY DE LA BASE DE DATOS GENERADA POR FIREBASE
+  });
+
+export default function getFirestore() {
+    return firebase.firestore(app)
+}; -->
+
+19. FUENTE:
 https://www.youtube.com/watch?v=97Ajv8-NRVY
 
 
