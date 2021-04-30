@@ -68,7 +68,7 @@ const OrdendeEnvio = ({formatDate, ordenRealizada, ordenId, terminarCompra}) => 
                         <div className="ordenDeEnvio__total">
                             <p>Total a Pagar con Envio: <span>$ {ordenRealizada.totalcompra}</span></p>
                         </div>
-                        <a className="linkWhatsApp" target="_blank" href={`https://wa.me/541166232923?text=${mensaje}`}>Ir a WhatsApp <i className="fab fa-whatsapp"></i></a>
+                        <a className="linkWhatsApp" target="_blank" href={`https://wa.me/541125624982?text=${mensaje}`}>Ir a WhatsApp <i className="fab fa-whatsapp"></i></a>
                     </div>
                     <p className="notificacionWhatsApp">Para un mejor seguimiento de tu pedido, te invitamos a hacernos llegar la orden haciendo click en el link a WhatsApp donde nos comunicaremos contigo ante cualquier circunstancia!</p>
                     <button className="botonTerminarCompra" onClick={(e)=> terminarCompra(e)}>Terminar Compra</button>
