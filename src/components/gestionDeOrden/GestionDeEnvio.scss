@@ -38,7 +38,7 @@
             }
             .datosDelComprador__info{
                 width: 90%;
-                @include flex(row, nowrap, center, center);
+                @include flex(row, nowrap, space-between, center);
                 @media (max-width: 768px) {
                     justify-content: space-evenly;
                     align-items: flex-start;
@@ -64,14 +64,21 @@
                 }
             }
             .datosDelComprador__tlf{
+                @include flex(column, nowrap, flex-start, flex-start);
                 width: 100%;
                 padding: 15px 0px;
+            }
+            .datosDelComprador__email{
+                @include flex(column, nowrap, flex-start, flex-start);
+                #userEmail{
+                    margin-bottom: 10px;
+                }
             }
             .datosDelComprador__direccion{
                 width: 100%;
                 padding: 15px 0px;
                 @include flex(column, nowrap, center, flex-start);
-                span{
+                p{
                     padding: 10px;
                     font-size: 20px;
                     color: #292828;
@@ -98,6 +105,19 @@
             width: 100%;
             padding: 15px 0px;
         }
+        .mensajeDeCorrecion{
+            color: $titulos;
+            font-weight: bold;
+            font-size: 14px;
+            width: 100%;
+            text-align: left;
+        }
+        .localesAnuncio{
+            font-size: 20px;
+            font-weight: bold;
+            color: #292828;
+            margin-bottom: 15px;
+        }
     }
     .datosDelComprador__locales{
         width: 100%;
@@ -110,15 +130,19 @@
                 border: 2px solid black;
                 box-shadow: 2px 2px 2px rgba($color: #000000, $alpha: 0.4);
             }
+            @media (max-width: 768px) {
+                width: 30%;
+                height: 80px;
+            }
         }
     }
     .datosDelComprador__buttons{
         width: 100%;
         padding: 15px 0px;
-        cursor: pointer;
         @include flex(row, nowrap, space-between, center);
         button{
             padding: 20px;
+            cursor: pointer;
         }
     }
     @media (max-width: 768px) {

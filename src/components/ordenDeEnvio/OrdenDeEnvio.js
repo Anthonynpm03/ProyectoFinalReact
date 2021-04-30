@@ -42,9 +42,10 @@ const OrdendeEnvio = ({formatDate, ordenRealizada, ordenId, terminarCompra}) => 
                         <div className="ordenDeEnvio__cliente">
                             <p>Cliente: <span>{ordenRealizada.usuario.nombre} {ordenRealizada.usuario.apellido}</span></p>
                             <p>Nro de Telefono: <span>{ordenRealizada.usuario.telefono}</span></p>
+                            <p>Email: <span>{ordenRealizada.usuario.email}</span></p>
                             <p>Nro de DNI: <span>{ordenRealizada.usuario.documento}</span></p>
                             <p>Zona de Entrega: <span>{ordenRealizada.usuario.zona}</span> </p>
-                            <p>Direccion Exacta: <span>{ordenRealizada.usuario.direccion}</span></p>
+                            <p>Direccion: <span>{ordenRealizada.usuario.direccion}</span></p>
                         </div>
                         <div className="ordenDeEnvio__productos">
                             <h4>Productos Comprados</h4>

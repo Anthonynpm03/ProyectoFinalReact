@@ -3,24 +3,70 @@ import CartContext from "../../context/CartContext";
 
 const GestionEnvio = ({volverGestion}) => {
     const {calcularCostoEnvio, createOrdenEnvio} = useContext(CartContext);
+    const [mostrarAlertas, setMostrarAlertas] = useState({alertaTlf: false, alertaEmail: false, alertaZona: false});
+    const [valueSelect, setValueSelect] = useState("");
+
     function generarOrdenEnvio (e){
         e.preventDefault();
+        let validacion = false;
         let nombreUsuario = document.getElementById("userNombreEnvio");
         let apellidoUsuario = document.getElementById("userApellidoEnvio");
         let telefonoUsuario = document.getElementById("userTelefonoEnvio");
-        let zonaUsuario = document.getElementById("userZonaEnvio");
+        let emailUsuario = document.getElementById("userEmail");
+        let emailUsuarioVerificacion = document.getElementById("userVerificacionEmail");
         let direccionUsuario = document.getElementById("userDireccionEnvio");
         let documentoUsuario = document.getElementById("userDniEnvio");
-        const user = {
-            nombre: nombreUsuario.value,
-            apellido: apellidoUsuario.value,
-            telefono: telefonoUsuario.value,
-            zona: zonaUsuario.value,
-            direccion: direccionUsuario.value,
-            documento: documentoUsuario.value
+
+        if(telefonoUsuario.value.length <= 7 & emailUsuario.value !== emailUsuarioVerificacion.value & valueSelect === ""){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: true, alertaZona: true});
+            alert("Por favor revisa tus datos!");
         }
-        const modalidad = "Envio a domicilio";
-        createOrdenEnvio(user, modalidad);
+        else if(telefonoUsuario.value.length <= 7 & emailUsuario.value !== emailUsuarioVerificacion.value){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: true, alertaZona: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(telefonoUsuario.value.length <= 7 & valueSelect === ""){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: false, alertaZona: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(emailUsuario.value !== emailUsuarioVerificacion.value & valueSelect === ""){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: true, alertaZona: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(telefonoUsuario.value.length <= 7){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: false, alertaZona: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(emailUsuario.value !== emailUsuarioVerificacion.value){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: true, alertaZona: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(valueSelect === ""){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: false, alertaZona: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else{
+            validacion = true;
+        }
+        if(validacion){
+            const user = {
+                nombre: nombreUsuario.value,
+                apellido: apellidoUsuario.value,
+                telefono: telefonoUsuario.value,
+                email: emailUsuario.value,
+                zona: valueSelect,
+                direccion: direccionUsuario.value,
+                documento: documentoUsuario.value
+            }
+            const modalidad = "Envio a domicilio";
+            createOrdenEnvio(user, modalidad);
+        };
+
+    };
+
+    function cambiarSelect(value){
+        setValueSelect(value);
+        calcularCostoEnvio(value);
     }
     return(
         <>
@@ -43,18 +89,27 @@ const GestionEnvio = ({volverGestion}) => {
                             <div className="datosDelComprador__tlf">
                                 <label>Telefono:</label>
                                 <input id="userTelefonoEnvio" type="text"></input>
+                                {mostrarAlertas.alertaTlf ? <span className="mensajeDeCorrecion">tu numero de telefono debe tener minimo 8 digitos</span> : null }
+                            </div>
+                            <div className="datosDelComprador__email">
+                                <label>Email:</label>
+                                <input id="userEmail" type="email"></input>
+                                <label>Verifica tu email:</label>
+                                <input id="userVerificacionEmail" type="email"></input>
+                                {mostrarAlertas.alertaEmail ? <span className="mensajeDeCorrecion">El email debe ser el mismo</span> : null }
                             </div>
                             <div className="datosDelComprador__direccion">
-                                <span>Direccion de Entrega:</span>
+                                <p>Direccion de Entrega:</p>
                                 <div className="datosDelComprador__direccionInputs">
-                                    <select name="userZonaEnvio" id="userZonaEnvio" value="default" onChange={(e) => calcularCostoEnvio(e.target.value)}>
-                                        <option disabled value="default">Seleccione una Direccion</option>
+                                    <select name="userZonaEnvio" id="userZonaEnvio" value={valueSelect} onChange={(e) => cambiarSelect(e.target.value)}>
+                                        <option disabled value="">Seleccione una Direccion</option>
                                         <option value="caballito">Caballito</option>
                                         <option value="flores">Flores</option>
                                         <option value="floresta">Floresta</option>
                                         <option value="villadelparque">Villa del Parque</option>
                                         <option value="paternal">Paternal</option>
                                     </select>
+                                    {mostrarAlertas.alertaZona ? <span className="mensajeDeCorrecion">Selecciona una zona de entrega</span> : null }
                                     <label>Calle y casa</label>
                                     <input id="userDireccionEnvio" type="text"></input>
                                 </div>
@@ -78,6 +133,7 @@ const GestionEnvio = ({volverGestion}) => {
 
 const GestionRetiro = ({volverGestion}) => {
     const {createOrdenRetiro} = useContext(CartContext);
+    const [mostrarAlertas, setMostrarAlertas] = useState({alertaTlf: false, alertaEmail: false, alertaLocal: false});
     let local = "";
 
     function definirLocal(e, x, id){
@@ -128,19 +184,58 @@ const GestionRetiro = ({volverGestion}) => {
 
     function generarOrdenRetiro (e){
         e.preventDefault();
+        let validacion = false;
         let nombreUsuario = document.getElementById("userNombreRetiro");
         let apellidoUsuario = document.getElementById("userApellidoRetiro");
         let telefonoUsuario = document.getElementById("userTelefonoRetiro");
+        let emailUsuario = document.getElementById("userEmail");
+        let emailUsuarioVerificacion = document.getElementById("userVerificacionEmail");
         let documentoUsuario = document.getElementById("userDniRetiro");
-        const user = {
-            nombre: nombreUsuario.value,
-            apellido: apellidoUsuario.value,
-            telefono: telefonoUsuario.value,
-            documento: documentoUsuario.value
+
+        if(telefonoUsuario.value.length <= 7 & emailUsuario.value !== emailUsuarioVerificacion.value & local === ""){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: true, alertaLocal: true});
+            alert("Por favor revisa tus datos!");
         }
-        const modalidad = "Retiro por Sucursal";
-        const LocalDondeRetira = local;
-        createOrdenRetiro(user, modalidad, LocalDondeRetira);
+        else if(telefonoUsuario.value.length <= 7 & emailUsuario.value !== emailUsuarioVerificacion.value){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: true, alertaLocal: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(telefonoUsuario.value.length <= 7 & local === ""){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: false, alertaLocal: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(emailUsuario.value !== emailUsuarioVerificacion.value & local === ""){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: true, alertaLocal: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(telefonoUsuario.value.length <= 7){
+            setMostrarAlertas({alertaTlf: true, alertaEmail: false, alertaLocal: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(emailUsuario.value !== emailUsuarioVerificacion.value){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: true, alertaZona: false});
+            alert("Por favor revisa tus datos!");
+        }
+        else if(local === ""){
+            setMostrarAlertas({alertaTlf: false, alertaEmail: false, alertaLocal: true});
+            alert("Por favor revisa tus datos!");
+        }
+        else{
+            validacion = true;
+        }
+
+        if(validacion){
+            const user = {
+                nombre: nombreUsuario.value,
+                apellido: apellidoUsuario.value,
+                telefono: telefonoUsuario.value,
+                email: emailUsuario.value,
+                documento: documentoUsuario.value
+            }
+            const modalidad = "Retiro por Sucursal";
+            const LocalDondeRetira = local;
+            createOrdenRetiro(user, modalidad, LocalDondeRetira);
+        }
     }
 
 
@@ -165,6 +260,14 @@ const GestionRetiro = ({volverGestion}) => {
                             <div className="datosDelComprador__tlf">
                                 <label>Telefono:</label>
                                 <input id="userTelefonoRetiro" type="text"></input>
+                                {mostrarAlertas.alertaTlf ? <span className="mensajeDeCorrecion">El email debe ser el mismo</span> : null }
+                            </div>
+                            <div className="datosDelComprador__email">
+                                <label>Email:</label>
+                                <input id="userEmail" type="email"></input>
+                                <label>Verifica tu email:</label>
+                                <input id="userVerificacionEmail" type="email"></input>
+                                {mostrarAlertas.alertaEmail ? <span className="mensajeDeCorrecion">El email debe ser el mismo</span> : null }
                             </div>
                             <span>Vamos a usar estos datos para emitir tu factura</span>
                             <div className="datosDelComprador__dni">
@@ -172,11 +275,13 @@ const GestionRetiro = ({volverGestion}) => {
                                 <input id="userDniRetiro" type="text"></input>
                             </div>
                         </div>
+                        <p className="localesAnuncio">Elegi el local donde retiraras tu pedido:</p>
                         <div className="datosDelComprador__locales">
                             <button id="artigas" onClick={(e)=> definirLocal(e, "Artigas 2101", "artigas")}>Artigas 2101</button>
                             <button id="jonte2224" onClick={(e)=> definirLocal(e, "Alvarez Jonte 2224", "jonte2224")}>Alvarez Jonte 2224</button>
                             <button id="jonte4411" onClick={(e)=> definirLocal(e, "Alvarez Jonte 4411", "jonte4411")}>Alvarez Jonte 4411</button>
                         </div>
+                        {mostrarAlertas.alertaLocal ? <span className="mensajeDeCorrecion">Debes elegir el local para retirar!</span> : null }
                         <div className="datosDelComprador__buttons">
                             <button onClick={volverGestion}>Volver</button>
                             <button onClick={(e) => generarOrdenRetiro(e)}>Generar Comprobante</button>

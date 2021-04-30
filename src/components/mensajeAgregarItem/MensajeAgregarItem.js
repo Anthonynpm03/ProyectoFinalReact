@@ -1,6 +1,6 @@
 const MensajeAgregarItem = () => {
     return(
-        <p className="mensajeAgregar">Agregar Articulos a tu carrito!</p>
+        <p className="mensajeAgregar">Agregá Articulos a tu carrito!</p>
     )
 }
 
