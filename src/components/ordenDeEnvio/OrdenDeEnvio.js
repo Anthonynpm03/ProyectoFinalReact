@@ -1,6 +1,8 @@
 const OrdendeEnvio = ({formatDate, ordenRealizada, ordenId, terminarCompra}) => {
+
     let productos = [];
     let productosMensaje = "";
+    
     function cargarProductos (){
         ordenRealizada.productos.map((item) => {
             productos.push([item.item.nombre, item.item.precioOferta + "x" + item.item.medida, item.cantidad]);

@@ -8,7 +8,6 @@ import OrdendeRetiro from "../ordenDeRetiro/OrdenDeRetiro";
 const OrdenDeCompra = () =>{
     const {ordenId, terminarCompra} = useContext(CartContext);
     const [ordenRealizada, setOrdenRealizada] = useState("vacio");
-    console.log(ordenRealizada);
     let modalidad = ordenRealizada.modalidad;
 
     useEffect(()=> {
@@ -33,7 +32,7 @@ const OrdenDeCompra = () =>{
                 }
             })
             .catch((error) => console.log(error));
-        }, 3000)
+        }, 1500)
     }, []);
 
     function formatDate(dateFirestore) {

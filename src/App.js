@@ -90,7 +90,7 @@ const App = () =>{
         .catch((error) => console.log(error));
         setTimeout(()=> {
             setMostrarFinalizar(true);
-        }, 2000);
+        }, 1000);
     };
 
     function createOrdenRetiro(user, modalidad, localDondeRetirar){
