@@ -17,6 +17,7 @@ Anthony Perez [https://github.com/Anthonynpm03](Github)
 ## Instalation
 - Clonar o descargar el repositorio, asegurandose que obtener todos los archivos.
 - Abrir la carpeta descargado en su editor de Codigo preferido.
+- Ejecutar el comando npm i firebase para instalar las dependencias de la base de datos.
 - Ejecutada el comando ```npm install```en tu terminal para instalar las dependecias necesarias para el proyecto (node_modeles).
 -Recuerda tener instalado Node.Js para poder usar el comando ```npm```. Si no lo tienes instalado puede hacerlo en este link [https://nodejs.org/es/download/].
 
